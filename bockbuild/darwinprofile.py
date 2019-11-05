@@ -249,7 +249,8 @@ class DarwinProfile (UnixProfile):
                 raise
 
         procs = [self.stage_textfiles(harness=destaging_harness, match=match_text),
-                 self.stage_binaries(harness=destaging_harness, match=match_stageable_binary)]
+                 self.stage_binaries(harness=destaging_harness, match=match_stageable_binary),
+                 self.validate_symlinks(harness=destaging_harness, match=match_symlinks)]
 
         Profile.postprocess(self, procs, directory,
                             lambda l: l.endswith('.release'))
